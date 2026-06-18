@@ -1,7 +1,27 @@
 ---
-title: "Analysis 1"
+title: "A Beautiful Graphic"
 author: "Hyder Ali"
 format: html
+execute:
+  echo: false
 ---
 
 Hyder Ali is a data maestro
+
+```{r}
+suppressPackageStartupMessages(library(tidyverse))
+```
+
+```{r}
+ggplot(mtcars, aes(x = wt, y = mpg, color = factor(cyl))) +
+  geom_point(size = 4) +
+  geom_smooth(method = "lm", se = FALSE) +
+  labs(
+    title = "Fuel Efficiency vs Car Weight",
+    subtitle = "A beautiful graphic using mtcars",
+    x = "Weight (1000 lbs)",
+    y = "Miles per Gallon (MPG)",
+    color = "Cylinders"
+  ) +
+  theme_minimal()
+```
